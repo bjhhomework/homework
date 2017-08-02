@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			a{
+				text-decoration: none;
+			}
+			body{
+				background: #666666;
+			}
+			.title{
+				width: 200px;
+				color: lightseagreen;
+				font-size: 30px;
+				margin-left:30%;
+				margin-top: 100px
+			}
+			#box1{
+				width: 400px;
+				margin: 0 auto 0;
+				overflow: hidden;
+				margin-top: 10px;
+			}
+			#box2{
+				width: 400px;
+				height: 400px;
+				margin: 0 auto 0;
+				position: relative;
+				margin-top: 10px;
+			}
+			#box3{
+				width: 400px;
+				height: 400px;
+				margin: 0 auto 0;
+				margin-top: 10px;
+			}
+			#box4{
+				width: 720px;
+				height: 400px;
+				margin: 0 auto 0;
+				margin-top: 10px;
+			}
+			.btn1{
+				height: 30px;
+				width: 80px;
+				border: 2px solid lightseagreen;
+				background: #666666;
+				border-radius:15px ;
+				margin: 0 12px;
+				margin-bottom: 30px;
+				cursor: pointer;
+				outline: none;
+				float: left;
+				display: block;
+				color: lightseagreen;	
+			}
+			.btn2{
+				height: 30px;
+				width: 80px;
+				border: 2px solid lightseagreen;
+				background: #666666;
+				border-radius:15px ;
+				margin: 0 12px;
+				margin-bottom: 30px;
+				cursor: pointer;
+				outline: none;
+				float: left;
+				display: block;
+				color: lightseagreen;	
+			}
+			.btn3{
+				height: 30px;
+				width: 80px;
+				border: 2px solid lightseagreen;
+				background: #666666;
+				border-radius:15px ;
+				margin: 0 12px;
+				margin-bottom: 30px;
+				cursor: pointer;
+				outline: none;
+				float: left;
+				display: block;
+				color: lightseagreen;	
+			}
+			#btn4{
+				height: 30px;
+				width: 80px;
+				border: 2px solid lightseagreen;
+				background: #666666;
+				border-radius:15px ;
+				cursor: pointer;
+				margin-left: 200px;
+				margin-top: 50px;
+				outline: none;
+				float: left;
+				display: block;
+				color: lightseagreen;	
+			}
+			.pic{
+				display: none;
+				border: 2px solid lightseagreen;
+				height: 310px;
+				width: 310px;
+				color: white;
+				font-size: 50px;
+				text-align: center;
+				line-height: 310px;
+				border-radius: 15px;
+				overflow: hidden;
+			}
+			.now{
+				background: lightseagreen;
+				color: white;
+			}
+			.blok{
+				display: block;
+			}
+			#pic_box{
+				width: 310px;
+				height: 310px;
+				border: 2px solid lightseagreen;
+				overflow: hidden;
+				position: relative;
+			}
+			#pic_long{
+				width: 930px;
+				height: 310px;
+				position: absolute;
+				left: 0;
+				transition: all 0.5s; 
+			}
+			.pic_in{
+				width: 310px;
+				height: 310px;
+				float: left;
+				color: white;
+				font-size: 50px;
+				text-align: center;
+				line-height: 310px;
+			}
+			#_left{
+				width: 30px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				color: white;
+				border-radius: 15px;
+				background: lightseagreen;
+				position: absolute;
+				left: -40px;
+				top: 50%;
+				cursor: pointer;
+			}
+			#_right{
+				width: 30px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				color: white;
+				border-radius: 15px;
+				background: lightseagreen;
+				position: absolute;
+				right: 45px;
+				top: 50%;
+				cursor: pointer;
+			}
+			span{
+				color: lightseagreen;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="title">· 选项卡</div>
+		<div id="box1">
+			<input type="button" value="1" class="btn1 now" />
+			<input type="button" value="2" class="btn1" />
+			<input type="button" value="3" class="btn1" />
+			<div class="pic blok">(づ￣3￣)づ</div>
+			<div class="pic">(ノ｀Д)ノ</div>
+			<div class="pic">(｡･∀･)ﾉﾞ</div>
+		</div>
+		
+		
+		<div class="title">· 轮播图</div>
+		<div id="box2">
+			<input type="button" value="1" class="btn2 now" />
+			<input type="button" value="2" class="btn2" />
+			<input type="button" value="3" class="btn2" />
+			<div id="pic_box">
+				<div id="pic_long">
+					<div class="pic_in">ヾ(=･ω･=)o</div>
+					<div class="pic_in">(づ｡◕‿‿◕｡)づ</div>
+					<div class="pic_in">٩(๑>◡<๑)۶</div>
+				</div>
+			</div>
+			<div id="_left"><</div>
+			<div id="_right">></div>
+		</div>
+		
+		
+		<div class="title">· 全选/反选</div>
+		<div id="box3" style="height: 150px;">
+			<input type="button" value="全选" class="btn3" />
+			<input type="button" value="反选" class="btn3" />
+			<br>
+			<br>
+			<br>
+			<span>1</span><input type="checkbox" class="chek"/>
+			<span>2</span><input type="checkbox" class="chek"/>
+			<span>3</span><input type="checkbox" class="chek"/>
+			<span>4</span><input type="checkbox" class="chek"/>
+			<span>5</span><input type="checkbox" class="chek"/>
+		</div>
+		
+		
+		<div class="title">· 九九乘法表</div>
+		<input type="button" id="btn4" value="生成乘法表" />
+		<div id="box4"></div>
+	</body>
+	<script type="text/javascript">
+		//选项卡
+		var btn1=document.getElementsByClassName("btn1");
+		var pic=document.getElementsByClassName("pic");
+		for(var i=0;i<btn1.length;i++){
+			btn1[i].index=i;
+			btn1[i].onclick=function(){
+				for(var j=0;j<pic.length;j++){
+					btn1[j].className="btn1";
+					pic[j].className="pic";
+				}
+				pic[this.index].className="pic blok";
+				btn1[this.index].className="btn1 now";
+			}
+		}
+		
+		//轮播图
+		var btn2=document.getElementsByClassName("btn2");
+		var pic_long=document.getElementById("pic_long");
+		var _left=document.getElementById("_left");
+		var _right=document.getElementById("_right");
+		var timer;
+		var index=0;
+		function move(){
+			timer=setInterval(function(){
+				pic_long.style.left=-index*310+"px";
+				for(var j=0;j<btn2.length;j++){
+					btn2[j].className="btn2";
+				}
+				btn2[index].className="btn2 now";
+				index++;
+				if(index>=3){
+					index=0;
+				}
+			},1000)
+		}
+		move();
+		for(var i=0;i<btn2.length;i++){
+	   	      btn2[i].index=i;
+	   	      btn2[i].onclick=function(){
+	   	      	clearInterval(timer);
+	   	      	for(var j=0;j<btn2.length;j++) {
+	   	      		btn2[j].className="btn2";
+	   	      	}
+	              pic_long.style.left=-this.index*310+"px"; 
+	               btn2[this.index].className="btn2 now";
+	               index=this.index;
+	               move();
+	   	      }     
+	   	      
+	   }
+		_left.onclick=function(){
+			clearInterval(timer);
+			if(index<=0){
+				index=3;
+			}
+			index--;
+			pic_long.style.left=-index*310+"px";
+			for(var j=0;j<btn2.length;j++){
+					btn2[j].className="btn2";
+			}
+			btn2[index].className="btn2 now";
+			move();
+		}
+		_right.onclick=function(){
+			clearInterval(timer);
+			if(index>=2){
+				index=-1;
+			}
+			index++;
+			pic_long.style.left=-index*310+"px";
+			for(var j=0;j<btn2.length;j++){
+					btn2[j].className="btn2";
+			}
+			btn2[index].className="btn2 now";
+			move();
+		}
+		
+		//全选/反选
+		var btn3=document.getElementsByClassName("btn3");
+		var chek=document.getElementsByClassName("chek");
+		btn3[0].onclick=function(){
+			for(var i=0;i<chek.length;i++){
+				chek[i].checked=1;
+			}
+		}
+		btn3[1].onclick=function(){
+			for(var i=0;i<chek.length;i++){
+				if(chek[i].checked==1){
+					chek[i].checked=0;
+				}else{
+					chek[i].checked=1;
+				}
+			}
+		}
+		
+		
+		//99乘法表
+		var box4=document.getElementById("box4");
+		var btn4=document.getElementById("btn4");
+		btn4.onclick=function(){
+			mark();
+		}
+		function mark(){
+			for (var n=1;n<=9;n++) {
+				for (var m=1;m<n+1;m++) {
+					var b=m*n;
+					var span=document.createElement("span");
+					span.innerHTML=m+"×"+n+"="+b+" "+" ";
+					box4.appendChild(span);
+				}
+				var br=document.createElement("br");
+				box4.appendChild(br);
+			}
+		}
+		
+	</script>
+</html>
