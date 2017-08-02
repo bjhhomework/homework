@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			ul,li{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			body{
+				position: relative;
+			}
+			#box{
+				width: 400px;
+				height: 250px;
+				border: 3px #CCCCCC solid;
+				position:absolute;
+				overflow: hidden;
+			}
+			ul{
+				width: 1600px;
+				height: 250px;
+			}
+			li img{
+				width: 400px;
+				height: 250px;
+				float: left;
+			}
+			span{
+				display: inline-block;
+				width: 30px;
+				height: 250px;
+				text-align: center;
+				line-height: 250px;
+				font-size:30px;
+				color: lightcoral;
+			}
+			#left{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#right{
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+			#box2{
+				width:120px;
+				height: 15px;
+				position:absolute;
+				top:220px;
+				left:150px;
+			}
+			#box2 span{
+				display:inline-block;
+				width: 8px;
+				height: 8px;
+				border: 2px solid #fff;
+				border-radius: 50%;
+				margin-left: 10px;
+			}
+			.active{
+				background: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li><img src="img/1.jpg"></li>
+				<li><img src="img/2.jpg"></li>
+				<li><img src="img/3.jpg"></li>
+				<li><img src="img/4.jpg"></li>
+			</ul>
+			<span id="left"><</span>
+			<span id="right">></span>
+		</div>
+		<div id="box2">
+			<span class="on"></span>
+			<span class="on"></span>
+			<span class="on"></span>
+			<span class="on"></span>
+		</div>
+		
+	</body>
+	<script>
+		var ul=document.getElementsByTagName("ul")[0];
+		var on=box2.getElementsByTagName("span");
+		var num=0;
+		left.onclick=function(){
+			num--;
+			if(num<0){
+				num=3
+			}
+			for(var i=0;i<on.length;i++){
+				on[i].className="";
+			}
+			on[num].className="active";
+			ul.style.marginLeft=-400*num+"px"
+		}
+		right.onclick=function(){
+			num++;
+			if(num>3){
+				num=0
+			}
+			for(var i=0;i<on.length;i++){
+				on[i].className="";
+			}
+			on[num].className="active";
+			ul.style.marginLeft=-400*num+"px"
+		}
+		for(var i=0;i<on.length;i++){
+			on[i].index=i;
+			on[i].onclick=function(){
+				num=this.index;
+				for(var i=0;i<on.length;i++){
+					on[i].className="";
+				}
+				this.className="active";
+				ul.style.marginLeft=-400*num+"px";
+			}
+		}
+	</script>
+	
+</html>
+
+
+
+
+
+
+
+
