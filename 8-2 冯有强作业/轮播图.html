@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 500px;
+			height: 300px;
+			border: 1px #000 solid;
+			margin: 100px auto;
+			overflow: hidden;
+			position: relative;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			width: 2000px;
+			height: 300px;
+			list-style: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		li{
+			width: 500px;
+			height: 300px;
+			float: left;
+			text-align: center;
+			line-height: 300px;
+			font-size: 100px;
+			color: #fff;
+		}
+		li:nth-child(1){background:red;}
+		li:nth-child(2){background:yellow;}
+		li:nth-child(3){background:lightskyblue;}
+		li:nth-child(4){background:lightgreen;}
+		#dott{
+			width: 104px;
+			height: 20px;
+			position: absolute;
+			top: 230px;
+			left: 200px;
+		}
+		#dott div{
+			width: 20px;
+			height: 20px;
+			margin: 0 3px;
+			float: left;
+			border-radius: 50%;
+			background: #fff;
+		}
+		span{
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			font-size: 40px;
+			text-align: center;
+			line-height: 50px;
+			color: #fff;
+			position: absolute;
+			top: 125px;
+		}
+		span:nth-of-type(1){
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<div id="dott">
+			<div style="background:#000"></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<span>></span>
+		<span><</span>
+	</div>
+</body>
+<script>
+	var ul=document.getElementsByTagName('ul')[0];
+	var span=document.getElementsByTagName('span');
+	var dott=document.getElementById('dott');
+	var dotts=dott.getElementsByTagName('div');
+	var num=0;
+	span[0].onclick=function(){
+		num++;
+		if(num>3){
+			num=0;
+		}
+		ul.style.left=-500*num+"px";
+		for(var i=0;i<dotts.length;i++){
+			dotts[i].style.background="";
+		}
+		dotts[num].style.background="#000";
+	}
+	span[1].onclick=function(){
+		num--;
+		if(num<0){
+			num=3;
+		}
+		ul.style.left=-500*num+"px";
+		for(var i=0;i<dotts.length;i++){
+			dotts[i].style.background="";
+		}
+		dotts[num].style.background="#000";
+	}
+	for(var i=0;i<dotts.length;i++){
+		dotts[i].index=i;
+		dotts[i].onclick=function(){
+			for(var i=0;i<dotts.length;i++){
+				dotts[i].style.background="";
+			}
+			ul.style.left=-500*this.index+"px";
+			this.style.background="#000";
+			num=this.index;
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ol{
+			padding-left: 20px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="全选">
+	<input type="button" value="反选">
+	<input type="checkbox" disabled>
+	<ol>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+	</ul>
+</body>
+<script>
+	var btn=document.getElementsByTagName('input');
+	var ol=document.getElementsByTagName('ol')[0];
+	var btns=ol.getElementsByTagName('input');
+	btn[0].onclick=function(){
+		for(var i=0;i<btns.length;i++){
+			btns[i].checked=true;
+		}
+		btn[2].checked=true;
+	}
+	btn[1].onclick=function(){
+		btn[2].checked=true;
+		for(var i=0;i<btns.length;i++){
+			if(btns[i].checked==true){
+				btns[i].checked=false;
+				btn[2].checked=false;
+			}else{
+				btns[i].checked=true;
+			}
+		}
+	}
+	for(var i=0;i<btns.length;i++){
+		btns[i].onclick=function(){
+			btn[2].checked=true;
+			for (var i = 0; i < btns.length; i++) {
+				if(btns[i].checked==false){
+					btn[2].checked=false;
+				}
+			};
+		}
+	}
+</script>
+</html>
