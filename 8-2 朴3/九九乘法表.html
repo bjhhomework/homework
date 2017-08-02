@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>九九乘法表</title>
+	<style type="text/css">
+		table{
+			border-collapse: collapse;
+		}
+	</style>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+var body=document.getElementsByTagName('body')[0];
+	var str="<table border='1'>";
+	for(var j=1;j<=9;j++){
+		str+="<tr>"
+		for(var i=1;i<=j;i++){
+			str+="<td>"+j+"*"+i+"&nbsp"+"</td>";
+		}
+		str+="</tr>"
+	}
+	str+="</table>";
+	body.innerHTML=str;
+</script>
+</html>

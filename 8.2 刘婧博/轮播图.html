@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		ul,ol{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			position: relative;
+		}
+		ul li{
+			width: 300px;
+			height: 200px;
+			background: lightgreen;
+			float: left;
+			text-align: center;
+			font-size: 30px;
+			line-height: 200px;
+		}
+		ul li:nth-child(2){
+			background: pink;
+		}
+		ul li:nth-child(3){
+			background: lightblue;
+		}
+		ul li:nth-child(4){
+			background: yellow;
+		}
+		#arrow{
+			position: absolute;
+			top: 90px;
+			left: 10px;
+			font-size: 30px;
+		}
+		#arrow1{
+			position: absolute;
+			font-size: 30px;
+			top: 90px;
+			left: 290px;
+		}
+		#bor{
+			width: 300px;
+			height: 200px;
+			overflow: hidden;
+		}
+		ol{
+			width: 100px;
+			height: 15px;
+			position: absolute;
+			top: 180px;
+			left: 104px;
+		}
+		ol li{
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			background: #fff;
+			float: left;
+			margin-left: 10px;
+		}
+		.on{
+			background: lightgray;
+		}
+	</style>
+</head>
+<body>
+	<div id="bor">
+		<ul id="box">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<div id="arrow"><</div>
+		<div id="arrow1">></div>
+		<ol id="ol">
+			<li class="on"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ol>
+	</div>
+</body>
+<script>
+	var oli = ol.getElementsByTagName('li');
+	var num = 0;
+	arrow1.onclick = function () {
+		num++;
+		if (num>3) {
+			num = 0;
+		}
+		for (var i = 0; i < oli.length; i++) {
+			oli[i].className = "";
+		}
+		oli[num].className = "on";
+		box.style.marginLeft = -300*num+"px";
+	}
+	arrow.onclick = function () {
+		num--;
+		if (num<0) {
+			num = 3;
+		}
+		for (var i = 0; i < oli.length; i++) {
+			oli[i].className = "";
+		}
+		oli[num].className = "on";
+		box.style.marginLeft = -300*num+"px";
+	}
+	for (var i = 0; i < oli.length; i++) {
+		oli[i].index = i;
+		oli[i].onclick = function () {
+			for (var i = 0; i < oli.length; i++) {
+				oli[i].className = "";
+			}
+			num = this.index;
+			this.className = "on";
+			box.style.marginLeft = -300*this.index+"px";
+		}
+	}
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+

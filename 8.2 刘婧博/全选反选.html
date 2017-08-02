@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8"/>
+</head>
+<body>
+	<input type="button" value="全选" class="btn">
+	<input type="button" value="反选" class="btn">
+	<input type="checkbox" class="check"></br></br>
+	<input type="checkbox" class="check"></br>
+	<input type="checkbox" class="check"></br>
+	<input type="checkbox" class="check"></br>
+	<input type="checkbox" class="check"></br>
+	<input type="checkbox" class="check"></br>
+</body>
+<script>
+	var btn = document.getElementsByClassName('btn');
+	var check = document.getElementsByClassName('check');
+	btn[0].onclick = function () {
+		for (var i = 0; i < check.length; i++) {
+			check[i].checked = true;
+		}
+	}
+	btn[1].onclick = function () {
+		for (var i = 0; i < check.length; i++) {
+			
+			if (check[i].checked == false) {
+				check[i].checked = true;
+			}
+			else if(check[i].checked == true){
+				check[i].checked = false;
+				check[0].checked = false;
+			}
+		}
+	}
+	for (var i = 0; i < check.length; i++) {
+		check[i].onclick = function () {
+			check[0].checked = true;
+			for (var j = 0; j < check.length; j++) {
+				if (check[j].checked == false) {
+					check[0].checked = false;
+				}
+			}
+		}
+	}
+</script>
+</html>
