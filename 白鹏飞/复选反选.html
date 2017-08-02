@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button value="全选">全选</button>
+		<button value="反选">反选</button>
+		<input type="checkbox" disabled="disabled"/ id="dia">
+		<br />
+		<div id="box">
+			<input type="checkbox"/><br />
+			<input type="checkbox"/><br />
+			<input type="checkbox"/><br />
+			<input type="checkbox"/><br />
+			<input type="checkbox"/><br />
+			<input type="checkbox"/><br />
+			<input type="checkbox"/><br />
+			<input type="checkbox"/><br />
+			<input type="checkbox"/><br />
+			<input type="checkbox"/><br />
+			<input type="checkbox"/><br />
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		var btn = document.getElementsByTagName('button');
+		var box = document.getElementsByTagName('div')[0];
+		var check = box.getElementsByTagName('input');
+		
+		btn[0].onclick = function(){
+			for(var i = 0; i<check.length;i++){
+				check[i].checked = true;
+			}
+			dia.checked = true
+		}
+		btn[1].onclick = function(){
+			dia.checked = true;
+			for(var i = 0; i<check.length;i++){
+				if(check[i].checked == true){
+					check[i].checked = false;
+					dia.checked = false;
+				}else{
+					check[i].checked = true;
+				}
+			}
+			
+		}
+		for(var i =0; i<check.length;i++){
+			check[i].onclick = function(){
+				dia.checked = true;
+				for(var i =0; i<check.length;i++){
+					if(check[i].checked == false){
+						dia.checked = false;
+					}
+				}
+			}
+		}
+	</script>
+</html>
