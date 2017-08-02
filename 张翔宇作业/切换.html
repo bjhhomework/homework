@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击切换</title>
+	<style>
+		div{
+			width: 300px;
+			height: 300px;
+			text-align: center;
+			font-size: 30px;
+			line-height: 300px;
+			background: green;
+			display: none;
+		}
+		.on{
+			background: blue;
+		}
+		.active{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="btn1" class="on">
+	<input type="button" value="btn2">
+	<input type="button" value="btn3">
+	<div class="active">A</div>
+	<div>B</div>
+	<div>C</div>
+</body>
+<script>
+	var btns = document.getElementsByTagName('input');
+	var div = document.getElementsByTagName('div');
+	//添加点击事件
+	for (var i = 0; i < btns.length; i++) {
+			//定义获取下标
+			btns[i].index = i;
+		btns[i].onclick = function(){
+			//清空点击事件样式
+			for (var j = 0; j < btns.length; j++) {
+				//清空样式
+				div[j].className = "";
+				btns[j].className = "";
+			};
+			this.className = "on";
+			div[this.index].className = "active";
+		}
+	};
+</script>
+</html>
