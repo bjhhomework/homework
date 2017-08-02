@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="top">
+	<input type="button" value="全选">
+	<input type="button" value="反选">
+	<input type="checkbox" disabled>
+</div>
+<div id="box">
+	1<input type="checkbox"><br/>
+	2<input type="checkbox"><br/>	
+	3<input type="checkbox"><br/>	
+	4<input type="checkbox"><br/>	
+	5<input type="checkbox"><br/>	
+	6<input type="checkbox"><br/>		
+</div>
+</body>
+<script type="text/javascript">
+	var btns = document.getElementById('top').getElementsByTagName('input');
+	var inputs = document.getElementById("box").getElementsByTagName("input");
+	btns[0].onclick = function(){
+		for (var i = 0; i < inputs.length; i++) {
+			inputs[i].checked = true;
+		}
+		btns[2].checked = true;
+	}
+	btns[1].onclick = function(){
+		btns[2].checked = true;
+		for (var i = 0; i < inputs.length; i++) {
+			if (inputs[i].checked == true) {
+				inputs[i].checked = false;
+				btns[2].checked = false;
+			}else{
+				inputs[i].checked = true;
+			}
+		}
+	}
+	for (var i = 0; i < inputs.length; i++) {
+		inputs[i].onclick = function(){
+			btns[2].checked = true;
+			for (var i = 0; i < inputs.length; i++) {
+				if (inputs[i].checked == false) {
+					btns[2].checked = false;
+				}
+
+			}
+		}
+	}
+</script>
+</html>

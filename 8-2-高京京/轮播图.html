@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 400px;
+			height: 250px;
+			margin:100px auto;
+			border:1px solid;
+			position: relative;
+			overflow: hidden;
+		}
+		ul{
+			padding: 0;
+			margin:0;
+			width:1600px;
+			height:250px;
+			list-style: none;
+			position: absolute;
+		}
+		ul li{
+			width: 400px;
+			height:250px;
+			text-align: center;
+			line-height: 250px;
+			font-size: 30px;
+			float: left;
+			color:white;
+		}
+		ul li:nth-child(1){
+			background: pink;
+		}
+		ul li:nth-child(2){
+			background: lightgreen;
+		}
+		ul li:nth-child(3){
+			background: lightblue;
+		}
+		ul li:nth-child(4){
+			background: yellow;
+		}
+		#left{
+			width:20px;
+			height:20px;
+			position: absolute;
+			top: 110px;
+			cursor: pointer;
+			text-align: center;
+		}
+		#right{
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			top: 110px;
+			right:0;
+			cursor: pointer;
+			text-align: center;
+		}
+		.circle{
+			width: 8px;
+			height:8px;
+			border-radius: 50%;
+			border:1px solid black;
+			float: left;
+			margin-left: 10px;
+		}
+		#c_box{
+			width: 80px;
+			height: 10px;
+			position: absolute;
+			bottom:20px;
+			left: 160px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<div id="left"><</div>
+		<div id="right">></div>
+		<div id="c_box">
+			<div class="circle" style="background:gray"></div>
+			<div class="circle"></div>
+			<div class="circle"></div>
+			<div class="circle"></div>
+		</div>
+		
+	</div>
+	
+</body>
+<script>
+	var li = document.getElementsByTagName('li');
+	var ul = document.getElementsByTagName('ul')[0];
+	var btn = document.getElementsByClassName('circle');
+	var left = document.getElementById('left');
+	var right = document.getElementById('right');
+	var num = 0;
+	right.onclick = function(){
+		// clearInterval(timer);
+		num++;
+		if(num > 3){
+			num = 0;
+		}
+		for (var i = 0; i < btn.length; i++) {
+			btn[i].style.background = "";
+		};
+		btn[num].style.background = "gray"
+		ul.style.left = -400*num + "px";
+	}
+	left.onclick = function(){
+		// clearInterval(timer);
+		num--;
+		if(num < 0){
+			num=3;
+		}
+		for (var i = 0; i < btn.length; i++) {
+			btn[i].style.background = "";
+		};
+		btn[num].style.background = "gray"
+		ul.style.left = -400*num + "px";
+		ul.style.left = -400*num + "px";
+	}
+	for (var i = 0; i < btn.length; i++) {
+		btn[i].index = i;
+		btn[i].onclick = function(){
+			// clearInterval(timer);
+			num = this.index;
+			for (var j = 0; j < btn.length; j++) {
+				btn[j].style.background = ""
+			};
+			this.style.background = "gray";
+			ul.style.left = -400*this.index + "px";
+		}
+	};
+	// var timer = setInterval(function(){
+	// 	ul.style.left = ul.offsetLeft-10+"px";
+	// },100)
+</script>
+</html>

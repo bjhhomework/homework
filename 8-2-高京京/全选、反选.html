@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="全选" id="btn1">
+	<input type="button" value="反选" id="btn2">
+	<input type="checkbox" id="choose" disabled>
+	<ol>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+	</ol>
+</body>
+<script>
+	var btn1 = document.getElementById('btn1');
+	var btn2 = document.getElementById('btn2');
+	var choose = document.getElementById('choose');
+	var ol = document.getElementsByTagName('ol')[0];
+	var li = ol.getElementsByTagName('input'); 
+
+	btn1.onclick = function(){
+		for (var i = 0; i < li.length; i++) {
+			li[i].checked = "true";
+		};
+		choose.checked = true
+	}
+	btn2.onclick = function(){
+		choose.checked = true;
+		for (var i = 0; i < li.length; i++) {
+			if(li[i].checked == true){
+				li[i].checked = false;
+				choose.checked = false
+			}else{
+				choose.checked = true;
+				li[i].checked = true;
+			}
+		};
+	}
+	for (var i = 0; i < li.length; i++) {
+		li[i].onclick = function(){
+			choose.checked = true;
+			for (var i = 0; i < li.length; i++) {
+				if(li[i].checked == false){
+					choose.checked = false;
+				}
+			};
+		}
+	};
+</script>
+</html>
