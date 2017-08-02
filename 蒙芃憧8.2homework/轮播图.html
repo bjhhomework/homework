@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            padding:0;
+        }
+        img{
+            width:400px;
+            height:300px;
+            position: relative;
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            float: left;
+        }
+        #content{
+            width:400px;
+            overflow: hidden;
+            margin: 100px auto;
+            position: relative;
+        }
+        #box{
+            width:1600px;
+            overflow: hidden;
+            position: relative;
+        }
+        #btn{
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            left:150px;
+        }
+        span{
+            width:10px;
+            height:10px;
+            background: white;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 8px;
+        }
+        #btn1{
+            position: absolute;
+            right:5px;
+            top:110px;
+            color: white;
+            font-size: 30px;
+        }
+        #btn2{
+            position: absolute;
+            left:5px;
+            top:110px;
+            color: white;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <ul id="box">
+            <li>
+                <img src="img/u=2296036879,3946723853&fm=26&gp=0.jpg" alt="">
+            </li>
+           <li>
+               <img src="img/u=2900887753,2217461140&fm=11&gp=0.jpg" alt="">
+           </li>
+            <li>
+                <img src="img/u=3123214601,1457130129&fm=11&gp=0.jpg" alt="">
+            </li>
+           <li>
+               <img src="img/u=4086839101,1418095538&fm=26&gp=0.jpg" alt="">
+           </li>
+        </ul>
+        <p id="btn">
+            <span style="background: red"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </p>
+        <p id="btn1">></p>
+        <p id="btn2"><</p>
+    </div>
+</body>
+<script>
+    var box = document.getElementById("box");
+    var btn = document.getElementById("btn");
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var span = btn.getElementsByTagName("span");
+    var num = 0;
+    btn1.onclick = function(){
+        num++;
+        if(num > 3){
+            num = 0
+        }
+        box.style.left = -400 * num + "px";
+        for(var i = 0;i < span.length;i++){
+            span[i].style.background = "white";
+        }
+        span[num].style.background = "red";
+    };
+    btn2.onclick = function(){
+        num--;
+        if(num < 0){
+            num = 3
+        }
+        box.style.left = -400 * num + "px";
+        for(var i = 0;i < span.length;i++){
+            span[i].style.background = "white";
+        }
+        span[num].style.background = "red";
+    };
+
+    for(var i = 0;i < span.length;i++){
+        span[i].index = i;
+        span[i].onclick = function(){
+            num = this.index;
+            for(var j = 0;j < span.length;j++){
+                span[j].style.background = "";
+            }
+            span[this.index].style.background = "red";
+            box.style.left = -400 * this.index + "px";
+        }
+    }
+</script>
+</html>
