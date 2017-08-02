@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			body{
+				background: lightblue;
+			}
+			span{
+				display: block;
+				color: white;
+				width: 130px;
+				height: 30px;
+				background: palevioletred;
+				border-radius: 10px;
+				margin: 10px 0;
+				text-align: center;
+				line-height: 30px;
+				font-size: 20px;
+			}
+			/*复选框*/
+			#div1{
+				font-size: 20px;
+			}
+			#btn1,#btn2{
+				width: 50px;
+				height: 23px;
+				background: plum;
+				border: 0;
+				border-radius: 5px;
+				font-size: 18px;
+				color: white;
+			}
+			.ip1{
+				width: 30px;
+				height: 30px;
+				vertical-align: middle;
+			}
+			/*乘法表*/
+			#div2{
+				color: white;
+				font-size: 20px;
+			}
+			/*选项卡*/
+			.btn3{
+				width: 100px;
+				height: 30px;
+				border: 0;
+				background: white;
+				font-size: 20px;
+				margin: auto 20px;
+			}
+			.div3{
+				width: 390px;
+				height: 300px;
+				display: none;
+				margin-left: 20px;
+				margin-top: 20px;
+				color: white;
+				font-size: 50px;
+				text-align: center;
+				line-height: 300px;
+			}
+			/*图片轮播*/
+			#div4{
+				margin-left: 20px;
+				position: relative;
+				width: 500px;
+				height: 300px;
+				overflow: hidden;
+			}
+			#ul1{
+				position: absolute;
+				width: 2000px;
+				left: 0;
+				transition: all .5s;
+			}
+			.li1{
+				width: 500px;
+				height: 300px;
+				float: left;
+				color: white;
+				font-size: 50px;
+				text-align: center;
+				line-height: 300px;
+			}
+			#ul2{
+				position: absolute;
+				left: 170px;
+				bottom: 10px;
+			}
+			.li2{
+				width: 20px;
+				height: 20px;
+				float: left;
+				background: white;
+				margin: 0 10px;
+				border-radius: 50%;
+				cursor: pointer;
+			}
+			#div4 div{
+				position: absolute;
+				background: white;
+				width: 20px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				cursor: pointer;
+			}
+			#left{
+				left: 0;
+				top: 125px;
+			}
+			#right{
+				right: 0;
+				top: 125px;
+			}
+		</style>
+	</head>
+	<body>
+		<span>1.复选框</span>
+		<div id="div1">选课：
+			<button id="btn1">全选</button>
+			<button id="btn2">反选</button>
+		</div>
+		<input type="checkbox" class="ip1" />语文
+		<input type="checkbox" class="ip1" />数学
+		<input type="checkbox" class="ip1" />英语
+		
+		
+		<span>2.九九乘法表</span>
+		<div id="div2"></div>
+		
+		
+		<span>3.选项卡</span>
+		<button class="btn3" style="background: plum;">选项一</button>
+		<button class="btn3">选项二</button>
+		<button class="btn3">选项三</button>
+		<div class="div3" style="display: block;background: deepskyblue;">(*≧∪≦)</div>
+		<div class="div3" style="background: mediumpurple;">d(･｀ω´･d*)</div>
+		<div class="div3" style="background: springgreen;">(ಥ_ಥ)</div>
+		
+		
+		<span>4.图片轮播</span>
+		<div id="div4">
+			<ul id="ul1">
+				<li class="li1" style="background: mediumpurple;">第一页</li>
+				<li class="li1" style="background: orangered;">第二页</li>
+				<li class="li1" style="background: springgreen;">第三页</li>
+				<li class="li1" style="background: chocolate;">第四页</li>
+			</ul>
+			<ul id="ul2">
+				<li class="li2" style="background: palevioletred;"></li>
+				<li class="li2" style=""></li>
+				<li class="li2" style=""></li>
+				<li class="li2" style=""></li>
+			</ul>
+			<div id="left"><</div>
+			<div id="right">></div>
+		</div>
+		
+		
+	</body>
+	<script type="text/javascript">
+		//复选框
+		var btn1=document.getElementById("btn1");
+		var btn2=document.getElementById("btn2");
+		var ip1=document.getElementsByClassName("ip1");
+		btn1.onclick=function(){
+			for(var i=0;i<ip1.length;i++){
+				ip1[i].checked=true;
+			}
+		}
+		btn2.onclick=function(){
+			for(var i=0;i<ip1.length;i++){
+				if(ip1[i].checked==true){
+					ip1[i].checked=false;
+				}else{
+					ip1[i].checked=true;
+				}
+			}
+		}
+		//乘法表
+		var div2=document.getElementById("div2");
+		var a;
+		for(var i=1;i<10;i++){
+			for(var j=1;j<=i;j++){
+				var a=document.createElement("a");
+				a.innerHTML=j+"×"+i+"="+j*i+"&nbsp&nbsp&nbsp";
+				div2.appendChild(a);
+			}
+			var br=document.createElement("br");
+			div2.appendChild(br);
+		}
+		//选项卡
+		var btn3=document.getElementsByClassName("btn3");
+		var div3=document.getElementsByClassName("div3");
+		for(var i=0;i<btn3.length;i++){
+			btn3[i].index=i;
+			btn3[i].onclick=function(){
+				for(var j=0;j<btn3.length;j++){
+					btn3[j].style.background="white";
+					div3[j].style.display="none";
+				}
+				btn3[this.index].style.background="plum";
+				div3[this.index].style.display="block";
+			}
+		}
+		//图片轮播
+		var ul1=document.getElementById("ul1");
+		var li2=document.getElementsByClassName("li2");
+		var left=document.getElementById("left");
+		var right=document.getElementById("right");
+		var index=0;
+		var timer;
+		function auto(){
+			timer=setInterval(function(){
+				index++;
+				for(var i=0;i<li2.length;i++){
+					li2[i].style.background="white";
+				}
+				if(index>=4){
+					index=0;
+				}
+				ul1.style.left=-index*500+"px";
+				li2[index].style.background="hotpink";
+			},1000)
+		}
+		auto();
+		for(var i=0;i<li2.length;i++){
+			li2[i].index=i;
+			li2[i].onclick=function(){
+				clearInterval(timer);
+				for(var j=0;j<li2.length;j++){
+					li2[j].style.background="white";
+				}
+				li2[this.index].style.background="hotpink";
+				ul1.style.left=-this.index*500+"px";
+				index=this.index;
+				auto();
+			}
+		}
+		left.onclick=function(){
+			clearInterval(timer);
+			index--;
+			for(var i=0;i<li2.length;i++){
+				li2[i].style.background="white";
+			}
+			if(index<0){
+				index=3;
+			}
+			ul1.style.left=-index*500+"px";
+			li2[index].style.background="hotpink";
+			auto();
+		}
+		right.onclick=function(){
+			clearInterval(timer);
+			index++;
+			for(var i=0;i<li2.length;i++){
+				li2[i].style.background="white";
+			}
+			if(index>=4){
+				index=0;
+			}
+			ul1.style.left=-index*500+"px";
+			li2[index].style.background="hotpink";
+			auto();
+		}
+	</script>
+</html>
