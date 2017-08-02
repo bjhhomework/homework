@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>99乘法表</title>
+	<style>
+		table{
+			border-collapse: collapse;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = "<table border=1><tbody>"
+	for (var i = 1; i <=9; i++) {
+		str += "<tr>"
+		for (var j = 1; j <= i; j++) {
+			str += "<td>"+i+"*"+j+"="+j*i+"</td>"
+		};
+		str += "</tr>"
+	};
+	str += "</tbody></table>"
+	document.getElementsByTagName('body')[0].innerHTML += str;
+</script>
+</html>
