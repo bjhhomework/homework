@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width:100px;
+			height: 100px;
+			background: orange;
+			border-radius: 30%;
+			position:absolute;
+			left:0;
+			top:0;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script type="text/javascript">
+	function Shuffle(){
+		this.div = document.getElementById('box');
+		this.x = this.y = 0;
+		this.event1();
+	}
+	//赋值事件
+	Shuffle.prototype.event1=function(){
+		var _this=this;
+		this.div.onmousedown=function(ev){
+				_this.style1();
+			document.onmousemove=function(){
+				_this.style2();
+			}
+			document.onmouseup=function(){
+				document.onmousemove=null;
+			}
+		}
+	}
+	Shuffle.prototype.style1=function(ev){
+		this.x = event.clientX - this.div.offsetLeft;
+		this.y = event.clientY-this.div.offsetTop
+	}
+	Shuffle.prototype.style2=function(ev){
+		this.div.style.left=event.clientX-this.x+"px";
+		this.div.style.top=event.clientY-this.y+"px";
+	}
+	new Shuffle();
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
