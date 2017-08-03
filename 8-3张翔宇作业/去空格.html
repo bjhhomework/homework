@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = "      hello word     ";
+	String.prototype.Left = function(){
+		var reg1 = /^\s+/;
+		return this.replace(reg1,"");
+	}
+	String.prototype.Right = function(){
+		var reg2 = /\s+$/;
+		return this.replace(reg2,"");
+	}
+	console.log(str.Left().length);
+	console.log(str.Right().length);
+	console.log(str.Left().Right());
+	console.log(str.Left());//去掉右边
+	console.log(str.Right());//去掉左边
+</script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#mant{
+			width: 200px;
+			height: 200px;
+			background: green;
+			position: absolute;
+			text-align: center;
+			line-height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="mant">走你</div>
+</body>
+<script>
+	//js版
+	// var mant = document.getElementById('mant');
+
+	// mant.onmousedown = function(event){
+	// 	var event = event || window.event;
+	// 	var disX = event.clientX - this.offsetLeft;
+	// 	var disY = event.clientY - this.offsetTop;
+	// 	document.onmousemove = function(event){
+	// 		var event = event || window.event;
+	// 		mant.style.left = event.clientX - disX + "px";
+	// 		mant.style.top = event.clientY - disY + "px";
+	// 	}
+
+	// 	document.onmouseup = function(){
+	// 		document.onmousemove = null;
+	// 	}
+	// }
+
+
+	// 构造函数Drag
+	function Ding(id){
+	    this.obj = document.getElementById(id);
+	};
+
+	Ding.prototype.init = function (){
+	    var than = this;
+	    this.obj.onmousedown = function (ev){
+	        var ev = ev || event;
+	        than.mouseDown(ev);
+	        return false;
+	    };
+	};
+
+	Ding.prototype.mouseDown = function (ev){
+	    var than = this;
+	    this.disX = ev.clientX - this.obj.offsetLeft;
+	    this.disY = ev.clientY - this.obj.offsetTop;
+
+	    document.onmousemove = function (ev){
+	        // var ev = ev || window.event;
+	        than.mouseMove(ev);
+	    };  
+
+	    document.onmouseup = function (){
+	        than.mouseUp();
+	    }
+	};
+
+	Ding.prototype.mouseMove = function (ev){
+	    this.obj.style.left = (ev.clientX - this.disX) + 'px';
+	    this.obj.style.top = (ev.clientY - this.disY) + 'px';
+	};
+
+	Ding.prototype.mouseUp = function (){
+	    document.onmousemove = null;
+	    document.onmouseup = null;
+	};
+
+	window.onload = function (){
+    	var ding = new Ding('mant');
+   		 ding.init();
+	};
+</script>
+</html>

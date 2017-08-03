@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		#box{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	function Pull () {
+		this.div = document.getElementById("box");
+		
+		this.disX = this.disY = 0;
+		this.drag();
+	}
+	Pull.prototype.drag = function () {
+		var _this = this;
+		this.div.onmousedown = function () {
+			_this.hau(this);
+			document.onmousemove = function () {
+				_this.hau1(_this.div);
+			}
+		}
+		document.onmouseup = function () {
+			document.onmousemove = null;
+		}
+	}
+	Pull.prototype.hau = function (obj,ev) {
+		this.disX = event.clientX - obj.offsetLeft;
+		this.disY = event.clientY - obj.offsetTop;
+	}
+	Pull.prototype.hau1 = function (obj,ev) {
+		obj.style.left = event.clientX - this.disX + "px";
+		obj.style.top = event.clientY - this.disY + "px";
+	}
+	var p = new Pull();
+</script>
+</html>
