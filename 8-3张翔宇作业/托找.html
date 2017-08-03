@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			/*cursor: pointer;*/
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var box = document.getElementById('box');
+	//元素在mousedown之后会跟随鼠标移动，鼠标释放，元素停在鼠标释放的位置
+
+	box.onmousedown = function(event){
+		var event = event || window.event;
+		var disX = event.clientX - this.offsetLeft;
+		var disY = event.clientY - this.offsetTop;
+		document.onmousemove = function(event){
+			var event = event || window.event;
+			box.style.left = event.clientX - disX + "px";
+			box.style.top = event.clientY - disY + "px";
+		}
+
+		document.onmouseup = function(){
+			document.onmousemove = null;
+		}
+	}
+</script>
+</html>
