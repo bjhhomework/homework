@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width:150px;
+			height:150px;
+			background: pink;
+			position: absolute;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<div id="box1"></div>
+</body>
+<script>
+	
+	function MoveDiv(id){
+		this.div = document.getElementById(id);
+		this.down();
+		this.up()
+	}
+
+	MoveDiv.prototype.down = function(){
+		var that = this;
+		this.div.onmousedown = function(){
+			that.move(this)
+		}
+	}
+
+	MoveDiv.prototype.move = function(obj){
+		document.onmousemove = function(){
+			obj.style.left = event.clientX - obj.offsetWidth/2 + "px";
+			obj.style.top = event.clientY - obj.offsetHeight/2 + "px";
+		}
+	}
+	MoveDiv.prototype.up = function(){
+		this.div.onmouseup = function(){
+			document.onmousemove = null;
+		}
+	}
+	var div = new MoveDiv("box");
+	var div1 = new MoveDiv("box1");
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	String.prototype.trimLeft = function(){
+		var reg = /^\s*/;
+		return this.replace(reg,"")
+	}
+	String.prototype.trimRight = function(){
+		var reg = /\s*$/;
+		return this.replace(reg,"")
+	}
+	var str = new String("   hello world     ");
+	console.log(str.trimRight().length);
+	console.log(str.trimLeft().length);
+	console.log(str.trimLeft().trimRight());	
+</script>
+</html>
