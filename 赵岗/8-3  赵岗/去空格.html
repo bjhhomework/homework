@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+	</body>
+	<script>
+	
+	String.prototype.fn1=function(){
+		var reg=/(^\s*)|(\s*$)/g;
+		return this.replace(reg,"")
+	}
+	var str=new String("    hello world    ")
+	console.log(str.fn1())
+		
+	</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0;
+				position: relative;
+			}
+			div{
+				width: 150px;
+				height: 150px;
+				background: lightseagreen;
+				position: absolute;
+				top: 0;
+				left: 0;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		
+	</body>
+	<script type="text/javascript">
+		function Dray(){
+			this.div=document.getElementsByTagName("div")[0];
+			this.init()
+		}
+		Dray.prototype.init=function(){
+			var that=this;
+			this.div.onmousedown=function(event){
+				var event=event||window.event;
+				var disX=event.clientX-that.div.offsetLeft;
+				var disY=event.clientY-that.div.offsetTop;
+				document.onmousemove=function(event){
+					var event=event||window.event;
+					that.div.style.left=event.clientX-disX+"px";
+					that.div.style.top=event.clientY-disY+"px";
+				}
+				document.onmouseup=function(){
+					document.onmousemove=null;
+				}
+			}
+		}
+		var dray= new Dray()
+	</script>
+</html>
