@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var str = "    hello world    ";
+	String.prototype.clearL=function(){
+		var reg = /^\s*/;
+		return this.replace(reg,"")
+	}
+	console.log(str.clearL());
+	String.prototype.clearR=function(){
+		var reg = /\s*$/
+		return this.replace(reg,"")
+	}
+	console.log(str.clearR());
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>仿jq选择器</title>
+</head>
+<body>
+	<div>我是div</div>
+	<span>我是span</span>
+</body>
+<script type="text/javascript">
+	function Ha(){}
+	Ha.prototype.piao3=function(str){
+		var reg = /^[a-z]+$/ig;
+		if(reg.test(str)){
+			return document.getElementsByTagName(str);
+		}                                   
+	}
+	var p = new Ha();
+	console.log(p.piao3("div"))
+	console.log(p.piao3("span"))
+</script>
+</html>
+
+
+
+
+
+
+
