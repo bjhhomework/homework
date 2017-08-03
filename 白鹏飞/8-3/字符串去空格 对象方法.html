@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		// 清除两边的空格 
+		String.prototype.trim = function() { 
+		  return this.replace(/(^\s*)|(\s*$)/g,''); 
+		}; 
+		var str = '   hellow word    '	;
+		console.log(str.trim())
+		console.log(str.trim().length)
+		console.log(str)
+	</script>
+</html>
