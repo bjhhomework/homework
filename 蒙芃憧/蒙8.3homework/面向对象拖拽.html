@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            margin: 0;
+            height:100px;
+            width: 100px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+   <div id="box"></div>
+   <div id="box1"></div>
+</body>
+<script>
+    function Drap(id){
+        this.box = document.getElementById(id);
+        var _this = this;
+        this.box.onmousedown = function(event){
+            _this.mouseDown(event);
+            document.onmousemove = function(event){
+                _this.mouseMove(event)
+            };
+        };
+        this.box.onmouseup = function(event){
+            _this.mouseUp(event)
+        }
+    }
+    Drap.prototype.mouseDown = function(event){
+        this.disX = event.clientX - this.box.offsetLeft;
+        this.disY = event.clientY - this.box.offsetTop;
+    };
+    Drap.prototype.mouseMove = function(event){
+        this.box.style.left = event.clientX - this.disX + "px";
+        this.box.style.top = event.clientY - this.disY + "px";
+    };
+    Drap.prototype.mouseUp = function(event){
+        document.onmousemove = null;
+    };
+    var box = new Drap("box");
+    var box1 = new Drap("box1");
+</script>
+</html>
