@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script>
+	var str = "   hello world   ";
+	String.prototype.clear = function () {
+		 return this.replace(/(^\s*)|(\s*$)/g, "");
+	}
+	console.log(str.clear())
+	console.log(str.clear().length)
+</script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin: 0;
+		}
+		div{
+			width: 150px;
+			height: 150px;
+			background: lightskyblue;
+			position: absolute;
+			cursor: pointer;
+			font-size: 50px;
+			text-align: center;
+			color: #fff;
+			line-height: 150px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script>
+	var div=document.getElementsByTagName('div');
+	for(var i=0;i<div.length;i++){
+		div[i].innerHTML=i;
+	}
+	function DragHurl(){
+		this.div=document.getElementsByTagName('div');
+		this.down();
+		this.up();
+	}
+	DragHurl.prototype.down=function(){
+		var _this=this;
+		for(var i=0;i<this.div.length;i++){
+			this.div[i].onmousedown=function(){
+				_this.move(this)
+			}
+		}
+	}
+	DragHurl.prototype.move=function(obj){
+		document.onmousemove=function(){
+			obj.style.left=(event.clientX-obj.offsetWidth/2)+"px";
+			obj.style.top=(event.clientY-obj.offsetHeight/2)+"px";
+		}
+	}
+	DragHurl.prototype.up=function(){
+		for(var i=0;i<this.div.length;i++){
+			this.div[i].onmouseup=function(){
+				document.onmousemove=null;	
+			}
+		}
+	}
+	var div =new DragHurl();
+</script>
+</html>

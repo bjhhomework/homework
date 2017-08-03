@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+</body>
+<script type="text/javascript">
+	function Drag(){
+		this.div = document.getElementsByTagName("div");
+		this.init();
+	}
+
+	Drag.prototype.init = function(){
+		var _this = this;
+		for (var i = 0; i < this.div.length; i++) {
+			this.div[i].onmousedown = function(){
+				_this.disX = event.clientX - this.offsetLeft;
+				_this.disY = event.clientY - this.offsetTop;
+				_this.go(this)
+				_this.up()
+			}		
+		}
+	}
+
+	Drag.prototype.go = function(obj){
+		var _this = this;
+		document.onmousemove = function(){
+			obj.style.left = event.clientX - _this.disX + "px";
+			obj.style.top = event.clientY - _this.disY + "px";
+		}
+
+	}
+
+	Drag.prototype.up = function(){
+		document.onmouseup = function(){
+			document.onmousemove = null;
+		}
+	}
+
+	var div = new Drag()
+</script>
+</html>

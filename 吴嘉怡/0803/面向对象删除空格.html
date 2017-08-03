@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		var str=" 我爱你 ";
+//		var reg1=/^\s*/g;
+//		var reg2=/\s*$/g;
+//		str.replace(reg1,"");
+//		str.replace(reg2,"");
+//		console.log(str);
+		String.prototype.left=function(){
+			var reg1=/^\s*/g;
+			 return this.replace(reg1,"");
+		}
+		String.prototype.right=function(){
+			var reg2=/\s*$/g;
+			 return this.replace(reg2,"");
+		}
+		var str=new String(" 123 ");
+		console.log(str.left());
+		console.log(str.right());
+	</script>
+</html>
