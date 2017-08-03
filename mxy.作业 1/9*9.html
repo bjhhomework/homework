@@ -3,18 +3,27 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style>
+
+	table{
+		border-collapse: collapse;
+	}
+
+	</style>
 </head>
 <body>
 		
 </body>
 	<script>
+	document.write("<table border = '1'><tbody>")
 	for(var i = 1; i <10 ; i++) {
+		document.write("<tr>")
 		for (var j= 1; j <=i; j++) {
-			document.write(j+"*"+i+"="+i*j+"&nbsp" )
+			document.write("<th>"+j+"*"+i+"="+i*j+"&nbsp"+"</th>" )
 		};
-		document.write("</br>")
+		document.write("</tr>")
 	};
-
+	document.write("</tbody></table>")
 
 	</script>
 </html>

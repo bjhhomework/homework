@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style>
+		div{
+			width: 400px;
+			height: 300px;
+			border: #000 1px solid;
+			margin: 0 auto;
+			position: relative;
+			overflow: hidden;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			width: 1600px;
+			height: 300px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition:all 0.5s;
+		}
+		ul li{
+			width: 400px;
+			height: 300px;
+			float: left;
+			font-size: 50px;
+			text-align: center;
+			line-height: 300px;
+		}
+		ul li:nth-child(1){
+			background: lightgreen;
+		}
+		ul li:nth-child(2){
+			background: lightblue;
+		}
+		ul li:nth-child(3){
+			background: purple;
+		}
+		ul li:nth-child(4){
+			background: pink;
+		}
+		span{
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			font-size: 25px;
+			text-align: center;
+			line-height: 30px;
+			background: orange;
+		}
+		#left{
+			top: 135px;
+		}
+		#right{
+			top: 135px;
+			left: 370px;
+		}
+		ol{
+			padding: 0;
+			margin: 0;
+			width: 100px;
+			height: 10px;
+			/*background: yellow;*/
+			position: absolute;
+			list-style: none;
+			top: 270px;
+			left: 150px;
+
+		}
+		ol li{
+			width: 10px;
+			height: 10px;
+			background: white;
+			float: left;
+			border-radius: 50%;
+			margin-right: 15px;
+		}
+		.one{
+			background: red;
+		}
+		.on{
+			background: red;
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<span id="left"><</span>
+		<span id="right">></span>
+		<ol>
+			<li class="one"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ol>
+	</div>
+	
+</body>
+<script>
+	var ul=document.getElementsByTagName('ul')[0];
+	var lis=ul.getElementsByTagName('li');
+	var left=document.getElementById('left');
+	var right=document.getElementById('right');
+	var ol=document.getElementsByTagName('ol')[0]
+	var li=ol.getElementsByTagName('li');
+
+	var num=0
+	right.onclick=function(){
+		num++;
+		if(num>3){
+			num=0;
+		}
+		for (var i = 0; i < li.length; i++) {
+				li[i].className=""
+			};
+		li[num].className="on";
+		ul.style.marginLeft=-num*400+"px";
+	}
+	left.onclick=function(){
+		num--;
+		if(num<0){
+			num=3;
+		}
+		for (var i = 0; i < li.length; i++) {
+				li[i].className=""
+			};
+		li[num].className="on";
+		ul.style.marginLeft=-num*400+"px";
+	}
+
+	for (var i = 0; i < li.length; i++) {
+		li[i].index=i
+		li[i].onclick=function(){
+			num=this.index;
+			for (var i = 0; i < li.length; i++) {
+				li[i].className=""
+			};
+			this.className="on"
+			ul.style.marginLeft=-this.index*400+"px";
+		}
+	};
+
+
+
+
+</script>
+</html>

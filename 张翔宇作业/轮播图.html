@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#mant{
+			width: 500px;
+			height: 300px;
+			border: 5px solid gray;
+			margin: 0 auto;
+			margin-top: 200px;
+			overflow: hidden;
+			position: relative;
+		}
+		ul{
+			list-style: none;
+			width: 3000px;
+			padding: 0;
+			margin:0; 
+			position: absolute;
+			left: 0;
+			transition:all 1s;
+		}
+		ul li{
+			width: 500px;
+			height: 300px;
+			float: left;
+			text-align: center;
+			line-height: 300px;
+		}
+		li:nth-child(1){
+			background: green;
+		}
+		li:nth-child(2){
+			background: red;
+		}
+		li:nth-child(3){
+			background: blue;
+		}
+		li:nth-child(4){
+			background: pink;
+		}
+		li:nth-child(5){
+			background: yellow;
+		}
+		li:nth-child(6){
+			background: purple;
+		}
+		span{
+			width: 40px;
+			height: 60px;
+			background: white;
+			position: absolute;
+			top: 120px;
+			text-align: center;
+			line-height: 60px;
+			font-size: 40px;
+			cursor: pointer;
+
+		}
+		#mant span:nth-child(2){
+			left: 0;
+		}
+		#mant span:nth-child(3){
+			right: 0;
+		}
+		#dian{
+			width: 240px;
+			height: 10px;
+			position: absolute;
+			left: 150px;
+			bottom: 25px;
+		}
+		#dian div{
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: gray;
+			float: left;
+			margin-left: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="mant">
+		<ul>
+			<li>第一张</li>
+			<li>第二张</li>
+			<li>第三张</li>
+			<li>第四张</li>
+			<li>第五张</li>
+			<li>第六张</li>
+		</ul>
+		<span> < </span>
+		<span> > </span>
+		<div id="dian">
+			<div style="background:white"></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+</body>
+<script>
+	var span = document.getElementsByTagName('span');
+	var li = document.getElementsByTagName('li');
+	var ul = document.getElementsByTagName('ul')[0];
+	var div = dian.getElementsByTagName('div');
+	var num = 0;
+	//点击右边的span 切换下一张
+	span[1].onclick = function(){
+		num++;
+		if(num > 5){
+			num = 0;
+		}
+		ul.style.left = -500*num + "px";
+		//点与span关联
+		for (var i = 0; i < div.length; i++) {
+			div[i].style.background = "";
+		};
+		div[num].style.background = "white";
+	}
+	//点击左边的span 切换下一张
+	span[0].onclick = function(){
+		num--;
+		if(num < 0){
+			num = 5;
+		}
+		ul.style.left = -500*num + "px";
+		//点与span关联
+		for (var i = 0; i < div.length; i++) {
+			div[i].style.background = "";
+		};
+		div[num].style.background = "white";
+	}
+	//点的部分
+	for (var i = 0; i < div.length; i++) {
+		//获取下标
+		div[i].index = i;
+		//点击点切换下一张
+		div[i].onclick = function(){
+			//清空点的样式
+			for (var i = 0; i < div.length; i++) {
+				div[i].style.background = "";
+			};
+			ul.style.left = -500*this.index + "px";
+			this.style.background = "white";
+			//点与span关联
+			num = this.index;
+		}
+	};
+</script>
+</html>

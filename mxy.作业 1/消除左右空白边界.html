@@ -1,0 +1,25 @@
+                           <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>clear</title>
+</head>
+<body>
+		
+</body>
+	<script>
+	//清除左边空格
+	String.prototype.clearleftS = function(){
+		var reg = /^\s*/;
+		return this.replace(reg,"");
+	};
+	//清除右边空格
+	String.prototype.clearrightS = function(){
+		var reg = /\s*$/;
+		return this.replace(reg,"");
+	}                                        
+	var str = "  hello  world                             ";	
+	console.log(str.clearrightS().length);
+	console.log(str.length);
+	</script>
+</html>

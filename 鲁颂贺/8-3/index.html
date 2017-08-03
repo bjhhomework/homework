@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 200px;height:200px;background: red;
+			}
+			.move1{
+				position: absolute;
+				left: 200px;top: 100px;
+			}
+			.move2{
+				position: absolute;
+				left: 200px;top: 350px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" />请输入一个字符串 
+	    <input type="button" name="" id="" value="点击去掉字符串首尾空格"/>
+	    <br />
+	    <textarea name="" rows="5" cols="20"></textarea>
+	    
+	    
+		
+		<div class="box move1"></div>
+		<div class="box move2"></div>
+	</body>
+</html>
+<script type="text/javascript">
+var inputs = document.getElementsByTagName("input");
+var box = document.getElementsByTagName("textarea")[0];
+String.prototype.trimStr = function(){
+    return this.replace(/(^\s*)|(\s*$)/g,''); 
+  }
+
+inputs[1].onclick = function(){
+	if(inputs[0].value == ""){
+		alert("输入不能为空");
+	}
+	var arr = inputs[0].value;
+	box.innerHTML = arr.trimStr();
+}
+
+
+var str = new String("          hello world     ");
+document.write()
+   //去除字符串首尾的空格  
+   String.prototype.trimStr = function(){
+    return this.replace(/(^\s*)|(\s*$)/g,''); 
+  };
+  
+  
+  
+  
+  
+  
+  
+  //面向对象版拖拽开始 
+  function Init(className){
+  	  this.div = document.getElementsByClassName(className);
+  	  this.down();
+  	  this.up();
+  }
+  
+  
+  Init.prototype.down = function(){
+  	var _this = this;
+    for(var i =0;i<this.div.length;i++){
+    	    this.div[i].index = i;
+    	   _this.div[i].onmousedown = function(event){
+    	   	var disX = event.clientX - this.offsetLeft;
+    	   	var disY = event.clientY - this.offsetTop;
+
+    	   	_this.div[this.index].onmousemove = function(event){
+    	   		var x = event.clientX-disX;
+    	   		var y = event.clientY-disY;
+    	   		_this.div[this.index].style.left = x + "px";
+    	   		_this.div[this.index].style.top = y + "px";
+    	   		
+    	   	  }
+    	    }
+     }
+  }
+  Init.prototype.up = function(){
+  	var _this = this;
+    for(var i =0;i<this.div.length;i++){
+    	   _this.div[i].onmouseup = function(event){
+    	   	_this.div[this.index].onmousemove = "";
+    	    }
+     }
+  }
+  
+  div = new Init("box")
+  
+  
+//面向过程
+  
+//var divs = document.getElementsByTagName("div");
+// for(var i =0;i<divs.length;i++){
+// 	    divs[i].index = i;
+//	  	divs[i].onmousedown = function(event){
+//	     	var disX = event.clientX - divs[this.index].offsetLeft;
+//	     	var disY = event.clientY - divs[this.index].offsetTop;	
+//	     	divs[this.index].onmousemove = function(event){
+//	     		var x = event.clientX - disX;
+//	     		var y = event.clientY - disY;
+//	     		this.style.left = x + "px";
+//	     		this.style.top = y + "px";		
+//	     	}
+//	     	divs[this.index].onmouseup = function(){
+//	     		divs[this.index].onmousemove = "";
+//	     	}    
+//     }
+//}
+ 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</script>
