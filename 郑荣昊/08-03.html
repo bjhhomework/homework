@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: #666666;
+				color: lightseagreen;
+			}
+			.title{
+				margin-top: 50px;
+				font-size: 30px;
+				margin-left: 20%;
+			}
+			#box1{
+				margin-left: 25%;
+			}
+			input{
+				margin-right: 40px;
+				color: white;
+				background: lightseagreen;
+				border: 0;
+				padding: 10px;
+				border-radius: 15px;
+				outline: none;
+				cursor: pointer;
+
+			}
+			#box2{
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				background: lightseagreen;
+				left: 675px;
+				top: 375px;
+				cursor: pointer;
+				border-radius: 50%;
+			}
+			#box3{
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				background: lightseagreen;
+				left: 650px;
+				top: 350px;
+				cursor: pointer;
+				border-radius: 50%;
+				
+			}
+			#box4{
+				position: absolute;
+				width: 150px;
+				height: 150px;
+				background: lightseagreen;
+				left: 625px;
+				top: 325px;
+				cursor: pointer;
+				border-radius: 50%;
+				
+			}
+			#box5{
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				background: lightseagreen;
+				left: 600px;
+				top: 300px;
+				cursor: pointer;
+				border-radius: 50%;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="title">作业A</div>
+		<div id="box1">
+			<input type="button" class="btn" value="清除左侧空格"/>
+			<span>测试用文字丨</span><span id="txt1"></span><span>丨测试用文字</span>
+			<br />
+			<br />
+			<input type="button" class="btn" value="清除右侧空格"/>
+			<span>测试用文字丨</span><span id="txt2"></span><span>丨测试用文字</span>
+		</div>
+		
+		<div id="box2"></div>
+		<div id="box3"></div>
+		<div id="box4"></div>
+		<div id="box5"></div>
+	</body>
+	<script type="text/javascript">
+		var txt1=document.getElementById("txt1");
+		var txt2=document.getElementById("txt2");
+		var btn=document.getElementsByClassName("btn");
+		//检测左边空格
+		String.prototype.left=function(){
+			var reg=/^\s*/g;
+			return this.replace(reg,"");
+		}
+		var str1=new String("    this is my homework   ");
+		txt1.innerHTML=str1;
+		btn[0].onclick=function(){
+			txt1.innerHTML=str1.left();
+		}
+		//检测右边空格
+		String.prototype.right=function(){
+			var reg=/\s*$/g;
+			return this.replace(reg,"");
+		}
+		var str2=new String("   this is my homework   ");
+		txt2.innerHTML=str2;
+		btn[1].onclick=function(){
+			txt2.innerHTML=str2.right();
+		}
+		
+		
+		//面向对象拖拽
+		function Move(id){
+		    this.obj=document.getElementById(id);
+		    this.disX=0;
+		    this.disY=0;
+		}
+		Move.prototype.init=function(){
+		    var _this=this;
+		    this.obj.onmousedown=function(e){
+		        var e=e||window.event;
+		        _this.mouseDown(e);
+		    };
+		};
+		Move.prototype.mouseDown=function(e){
+		    var _this=this;
+		    this.disX=e.clientX-this.obj.offsetLeft;
+		    this.disY=e.clientY-this.obj.offsetTop;
+		    document.onmousemove=function(e){
+		        var e=e||window.event;
+		        _this.mouseMove(e);
+		    };  
+		    document.onmouseup=function(){
+		        _this.mouseUp();
+		    }
+		};
+		Move.prototype.mouseMove=function(e){
+		    this.obj.style.left=(e.clientX-this.disX)+'px';
+		    this.obj.style.top=(e.clientY-this.disY)+'px';
+	        return false;
+		};
+		Move.prototype.mouseUp=function(){
+		    document.onmousemove=null;
+		    document.onmouseup=null;
+		};
+		var drag2=new Move("box2");
+	 	drag2.init();
+	 	var drag3=new Move("box3");
+	 	drag3.init();
+	 	var drag4=new Move("box4");
+	 	drag4.init();
+	 	var drag5=new Move("box5");
+	 	drag5.init();
+	 	
+	 	
+	 	
+	 	function Catch(obj){
+	 		this.init=function(){
+	 			var reg1=/^"#{1}"$/;
+	 			var reg2=/^".{1}"$/;
+	 			var reg3=/^"[a-zA-Z]+"$/;
+	 			if(reg1.test(obj)){
+	 				this.id();
+	 			}
+	 		}
+	 	}
+	 	Catch.prototype.id=function(obj){
+	 		return document.getElementById(obj);
+	 	}
+	 	Catch.prototype.className=function(obj){
+	 		return document.getElementsByClassName(obj);
+	 	}
+	 	Catch.prototype.tagName=function(obj){
+	 		return document.getElementsByTagName(obj);
+	 	}
+	 	
+	 	
+	</script>
+</html>
