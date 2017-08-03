@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"> 
+	<title>Document</title>
+	<style>
+	div{
+		font-size: 50px;
+		text-align: center;
+		line-height: 200px;
+	}
+	#box{
+		width: 200px;
+		height: 200px;
+		background: lightblue;
+		position: absolute;
+		cursor: pointer;
+	}
+	#box1{
+		width: 200px;
+		height: 200px;
+		background: lightblue;
+		
+		position: absolute;
+		cursor: pointer;
+	}
+	</style>
+</head>
+<body>
+	<div id="box">one</div>
+	<div id="box1">two</div>
+</body>
+	<script>
+	function Draz(id){
+		this.box = document.getElementById(id);
+		this.down();
+		this.up();
+	}
+	Draz.prototype.down = function(){
+		var _this = this;
+		this.box.onmousedown = function(event){		
+			var event = event || window.event;
+			_this.disX = event.clientX - this.offsetLeft;
+			_this.disY = event.clientY - this.offsetTop;
+			_this.move()
+		}		
+	}
+	Draz.prototype.move = function(){
+		var _this = this
+		document.onmousemove = function(event){
+			var event = event || window.event;
+			_this.box.style.left = event.clientX - _this.disX + "px";
+			_this.box.style.top = event.clientY - _this.disY + "px"; 
+		}
+	}
+	Draz.prototype.up = function(){
+		this.box.onmouseup = function(){
+			document.onmousemove = null;
+		}
+	}
+	var d = new Draz("box")
+	var d1 = new Draz("box1")
+
+
+	</script>
+</html>
