@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script>
+	String.prototype.left = function(){
+		var reg = /^\s+/;
+		return this.replace(reg,".")
+	}
+	String.prototype.right = function(){
+		var reg = /\s+$/;
+		return this.replace(reg,".")
+	}
+	var str = new String("       hello world      ")
+	console.log(str.left())
+	console.log(str.right())
+	console.log(str.left().right())
+</script>
+</html>

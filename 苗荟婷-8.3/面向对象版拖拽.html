@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		body{
+			position:relative;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: hotpink;
+			position:absolute;
+		}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+	<script>
+		function TabSwitch(){
+			this.div=document.getElementsByTagName("div")[0];
+			this.divX=this.divY=0;
+			this.click();
+		}
+		TabSwitch.prototype.click=function(){
+			var that=this;
+			this.div.onmousedown=function(){
+				that.tabStyle1(); 
+				document.onmousemove = function(){
+					that.tabStyle2();
+				}
+				document.onmouseup=function(){
+					document.onmousemove=null;
+				}
+			}
+		}
+		TabSwitch.prototype.tabStyle1=function(ev){
+			this.divX=event.clientX-this.div.offsetLeft;
+			this.divY=event.clientY-this.div.offsetTop;
+		}
+		TabSwitch.prototype.tabStyle2=function(ev){
+			var event=event||window.event;
+			this.div.style.left = event.clientX- this.divX + "px";
+			this.div.style.top = event.clientY -this.divY + "px";
+		}
+		var box=new TabSwitch();
+	</script>
+</html>
